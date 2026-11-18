@@ -21,7 +21,7 @@ export const WEDDING_CONFIG = {
     storySubtitle: "Giữ lấy tin nhắn này, chúng tôi chuẩn bị bước vào một hành trình mới trong câu chuyện tình yêu của mình.",
     
     eventTitle: "Hãy chứng kiến ngày trọng đại của chúng tôi",
-    dressCode: "Hãy dẫn người thương đi cùng nhé!😘😘😘",
+    dressCode: "Hãy dẫn người thương đi cùng nhé!😘",
     giftMessage: "Sự hiện diện của bạn tại đám cưới là món quà trân quý nhất dành cho chúng tôi.",
     giftLink: "www.trangwebhay.vn",
     
