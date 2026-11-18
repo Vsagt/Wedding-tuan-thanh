@@ -22,11 +22,11 @@ export default function Home() {
         </div>
         
         {/* Overlay content */}
-        <div className="relative z-10 flex flex-col items-center text-center bg-white/20 backdrop-blur-[2px] p-8 rounded-lg border border-white/30">
+        <div className="relative z-10 flex flex-col items-center justify-center text-center bg-white/20 backdrop-blur-[2px] p-8 rounded-lg border border-white/30 max-w-4xl w-full mx-4">
           <Countdown />
           <p className="text-xl mb-4 tracking-widest">T&T</p>
           
-          <h1 className="text-6xl md:text-8xl font-bold mb-4 tracking-tighter">
+          <h1 className="text-5xl md:text-8xl mb-4 tracking-normal font-[family-name:var(--font-great-vibes)] whitespace-nowrap">
             {WEDDING_CONFIG.coupleNames}
           </h1>
           
@@ -104,7 +104,6 @@ export default function Home() {
         <footer className="mt-12 md:mt-24 border-t border-[#4A3728]/10 pt-8 md:pt-16 pb-8 text-center">
           <div className="max-w-4xl mx-auto px-4">
             <div className="relative h-[150px] md:h-[200px] w-full mb-4 md:mb-8">
-              {/* Giảm chiều cao ảnh một chút trên điện thoại để không chiếm quá nhiều diện tích */}
               <Image
                 src={WEDDING_CONFIG.images.footer}
                 alt="Trang trí cuối"
