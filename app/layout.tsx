@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import { Inter, Great_Vibes } from "next/font/google";
 import "./globals.css";
+import MusicPlayer from "../components/MusicPlayer"; // Thêm dòng này
 
 const inter = Inter({ 
   subsets: ["latin", "vietnamese"],
   variable: "--font-inter",
 });
 
-// Đã thêm weight: "400" vào đây để sửa lỗi Build
 const greatVibes = Great_Vibes({
   subsets: ["latin"],
-  weight: "400", // Chỉ định rõ trọng lượng 400
+  weight: "400",
   variable: "--font-great-vibes",
 });
 
@@ -28,6 +28,8 @@ export default function RootLayout({
     <html lang="vi" className={`${inter.variable} ${greatVibes.variable}`}>
       <body className={`${inter.variable} antialiased`}>
         {children}
+        {/* Thêm MusicPlayer vào đây */}
+        <MusicPlayer />
       </body>
     </html>
   );
