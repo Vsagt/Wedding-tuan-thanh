@@ -1,22 +1,16 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Montserrat } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  subsets: ["latin", "vietnam"],
-  weight: ["400", "700", "900"],
-  variable: "--font-playfair",
-});
-
-const montserrat = Montserrat({
-  subsets: ["latin", "vietnam"],
-  weight: ["400", "500", "700"],
-  variable: "--font-montserrat",
+// Đã sửa "vietnam" thành "vietnamese"
+const inter = Inter({ 
+  subsets: ["latin", "vietnamese"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
-  title: "TUẤN&THANH Wedding Invitation",
-  description: "Lễ cưới của Tuấn & Thanh",
+  title: "Đám Cưới Tuấn & Thanh",
+  description: "Mời bạn đến dự lễ cưới của chúng mình",
 };
 
 export default function RootLayout({
@@ -25,11 +19,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="vi"
-      className={`${playfair.variable} ${montserrat.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col bg-[#F5F1E6] text-[#4A3728] font-sans">
+    // Loại bỏ langAttr và đưa inter.variable vào className
+    <html lang="vi" className={inter.variable}>
+      <body className={`${inter.variable} antialiased`}>
         {children}
       </body>
     </html>
