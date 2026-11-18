@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-// Đã sửa "vietnam" thành "vietnamese"
+// Sửa "vietnam" thành "vietnamese" ở đây
 const inter = Inter({ 
   subsets: ["latin", "vietnamese"],
   variable: "--font-inter",
@@ -19,8 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // Loại bỏ langAttr và đưa inter.variable vào className
-    <html lang="vi" className={inter.variable}>
+    <html lang="vi" langAttr={inter.variable}>
       <body className={`${inter.variable} antialiased`}>
         {children}
       </body>
