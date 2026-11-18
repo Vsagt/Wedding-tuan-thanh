@@ -6,13 +6,11 @@ const MusicPlayer = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    // Khởi tạo đối tượng âm thanh
-    const audio = new Audio("/music.mp3"); // Thay tên file nhạc của bạn vào đây
+    const audio = new Audio("/music.mp3");
     audio.loop = true;
     audio.preload = "auto";
     audioRef.current = audio;
 
-    // Xử lý cơ chế tự động phát khi có tương tác đầu tiên (do trình duyệt chặn tự động phát hoàn toàn)
     const handleFirstInteraction = () => {
       if (audio.paused) {
         audio.play().then(() => {
@@ -21,18 +19,20 @@ const MusicPlayer = () => {
           console.log("Autoplay blocked, waiting for user interaction.");
         });
       }
-      // Gỡ bỏ listener sau khi đã kích hoạt thành công
       window.removeEventListener("click", handleFirstInteraction);
       window.removeEventListener("touchstart", handleFirstInteraction);
+      window.removeEventListener("scroll", handleFirstInteraction);
     };
 
     window.addEventListener("click", handleFirstInteraction);
     window.addEventListener("touchstart", handleFirstInteraction);
+    window.addEventListener("scroll", handleFirstInteraction, { passive: true });
 
     return () => {
       audio.pause();
       window.removeEventListener("click", handleFirstInteraction);
       window.removeEventListener("touchstart", handleFirstInteraction);
+      window.removeEventListener("scroll", handleFirstInteraction);
     };
   }, []);
 
@@ -49,16 +49,17 @@ const MusicPlayer = () => {
   };
 
   return (
-    <div className="fixed bottom-4 left-4 z-[9999] flex items-center justify-center">
+    <div className="fixed bottom-18 left-4 z-[9999] flex items-center justify-center">
+      {/* Loại bỏ mọi class bg, border, shadow để icon hoàn toàn tự do */}
       <button
         onClick={togglePlay}
-        className="p-2 bg-white/30 backdrop-blur-sm border border-white/20 rounded-full shadow-lg hover:bg-white/50 transition-all duration-300 active:scale-90"
+        className="p-0 bg-transparent border-none shadow-none hover:scale-110 transition-transform duration-200 active:scale-90"
         aria-label={isPlaying ? "Mute" : "Unmute"}
       >
         <img
           src={isPlaying ? "/images/mute-ic.png" : "/images/unmute-ic.png"}
           alt="Mute/Unmute"
-          className="w-8 h-8 object-contain"
+          className="w-14 h-14 object-contain"
         />
       </button>
     </div>
